@@ -24,7 +24,7 @@ def pulls3object():
                 download_template_from_aws(file.key,file.last_modified)
     #   with open('data.json', 'w', encoding='utf-8') as f:
     #        json.dump(files_payload, f, indent=4, sort_keys=True, default=str)
-     print('zipping file');
+     print('zipping file')
      root_dir = 'remotefiles'
      shutil.make_archive(root_dir, 'zip', root_dir)
 
