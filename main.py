@@ -18,7 +18,7 @@ def pulls3object():
      bucket = s3.Bucket(os.getenv('AWS_PUBLIC_S3_BUCKET_NAME'))
      files_payload = []
      for file in bucket.objects.all():
-         if (file.last_modified).replace(tzinfo = None) >= datetime.datetime(2021, 3, 16,tzinfo = None) and (file.last_modified).replace(tzinfo = None) <= datetime.datetime(2021, 3, 19,tzinfo = None):
+         if (file.last_modified).replace(tzinfo = None) >= datetime.datetime(2021, 3, 8,tzinfo = None) and (file.last_modified).replace(tzinfo = None) <= datetime.datetime(2021, 3, 14,tzinfo = None):
             if('resume' not in file.key):
                 files_payload.append({'file':file.key,'timestamp':file.last_modified})
                 download_template_from_aws(file.key,file.last_modified)
