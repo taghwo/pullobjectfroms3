@@ -24,7 +24,8 @@ def pulls3object():
                 download_template_from_aws(file.key,file.last_modified)
      print('zipping file')
      root_dir = 'remotefiles'
-     shutil.make_archive(root_dir, 'zip', root_dir)
+     base_dir = f"remotefiles-{time.ctime()}".replace("","-")
+     shutil.make_archive(base_dir, 'zip', root_dir)
 
 def download_template_from_aws(s3_file_name,last_modified):
     s3 = boto3.client('s3',endpoint_url = 'https://s3.wasabisys.com', aws_access_key_id=os.getenv('AWS_ACCESS_KEY_ID'),
@@ -33,7 +34,7 @@ def download_template_from_aws(s3_file_name,last_modified):
         '''
         check if directory exist
         '''
-        root_dir = f"remotefiles-{time.ctime()}".replace("","-")
+        root_dir = "remotefiles"
 
         date = datetime.datetime.strptime(str(last_modified).replace('+00:00',''),"%Y-%m-%d %H:%M:%S")
         tuple = date.timetuple()
