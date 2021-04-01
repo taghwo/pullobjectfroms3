@@ -22,7 +22,7 @@ def pulls3object():
             if('resume' not in file.key):
                 files_payload.append({'file':file.key,'timestamp':file.last_modified})
                 download_template_from_aws(file.key,file.last_modified)
-     print('zipping file')
+     print('zipping files')
      root_dir = 'remotefiles'
      base_dir = f"remotefiles-{time.ctime()}".replace("","-")
      shutil.make_archive(base_dir, 'zip', root_dir)
