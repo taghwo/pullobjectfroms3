@@ -33,7 +33,7 @@ def download_template_from_aws(s3_file_name,last_modified):
         '''
         check if directory exist
         '''
-        root_dir = 'remotefiles'
+        root_dir = f"remotefiles-{time.ctime()}".replace("","-")
 
         date = datetime.datetime.strptime(str(last_modified).replace('+00:00',''),"%Y-%m-%d %H:%M:%S")
         tuple = date.timetuple()
